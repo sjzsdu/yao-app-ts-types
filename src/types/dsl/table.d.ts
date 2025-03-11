@@ -158,7 +158,15 @@ export namespace YaoTable {
     batch?: BatchPresetDSL;
     /**数据导入 */
     import?: ImportPresetDSL;
+    column?: TableCustomColumn;
+    filter?: TableCustomColumn;
   };
+
+  export type TableCustomColumn = {
+    /**需要显示的列 */
+    musts?: string[];
+  };
+
 
   /**批量处理数据 */
   export type BatchPresetDSL = {
@@ -201,10 +209,12 @@ export namespace YaoTable {
     hide?: boolean;
     /**自定义行操作按钮 */
     actions: YaoComponent.Actions;
+    confirm?: { }
   };
 
   /**表格字段定义。指定表格列字段, 表格筛选器字段定义 */
   export type FieldsDSL = {
+    batch?: YaoField.Batchs;
     /**表格筛选器字段定义 */
     filter?: YaoField.Filters;
     /**表格列字段定义 */

@@ -1,3 +1,9 @@
+# 安装json-schema
+
+```bash
+curl -sL https://raw.githubusercontent.com/sjzsdu/yao-app-ts-types/refs/heads/main/install-schema.sh| bash
+```
+
 # YAO 应用 JSON-SCHEMA
 
 开发 yao 应用需要频繁的编写 json 格式的配置文件。文件的配置项又特别的多，如果没有辅助工具，写起来比较累。而目前想到比较好的方法是使用 json-schema 文件帮助校验 json 语法，并且在 vscode 中使用 json-schema 也可以进行语法提示与自动完成。

@@ -1,6 +1,22 @@
 #!/bin/bash
 
 
+# 获取 VERSION
+if [ -n "$VERSION" ]; then
+    # 如果环境变量 VERSION 存在，使用它
+    echo "Using VERSION from environment variable: $VERSION"
+elif [ -n "$1" ]; then
+    # 如果提供了脚本参数，使用它
+    VERSION="$1"
+    echo "Using VERSION from script argument: $VERSION"
+else
+    # 如果都没有提供，从 package.json 中获取
+    VERSION=$(node -p "require('./package.json').version")
+    echo "Using VERSION from package.json: $VERSION"
+fi
+
+mkdir -p "json-schemas/$VERSION"
+
 pnpm run build
 
 # convert the typescript type to json-schema files
@@ -44,7 +60,7 @@ for line in "${array[@]}"
 do
     words=($(echo $line | tr "|" "\n"))
     echo "begin convert schema ${words[1]}"
-    npx ts-json-schema-generator --path "src/types/dsl/${words[0]}.d.ts" --type "${words[1]}" > "./json-schemas/0.10.4/${words[2]}"
+    npx ts-json-schema-generator --path "src/types/dsl/${words[0]}.d.ts" --type "${words[1]}" > "./json-schemas/${VERSION}/${words[2]}"
     echo "schema ${words[1]} converted"
 done
 

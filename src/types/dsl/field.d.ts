@@ -4,6 +4,8 @@ export namespace YaoField {
   // Filters the filters DSL
   export type Filters = { [key: string]: FilterDSL };
 
+  export type Batchs = { [key: string]: BatchDSL };
+
   // Columns the columns DSL
   export type Columns = { [key: string]: ColumnDSL };
 
@@ -47,6 +49,7 @@ export namespace YaoField {
   };
 
   export type aliasFilterDSL = FilterDSL;
+  type BatchDSL = FilterDSL
 
   // Compute the compute filed
   export type Compute = string;
