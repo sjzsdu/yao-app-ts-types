@@ -27,6 +27,7 @@ export namespace YaoComponent {
     | "Mentions"
     | "Password"
     | "RadioGroup"
+    | "Switch"
     | "RangePicker"
     | "RichText"
     | "Select"
@@ -35,7 +36,9 @@ export namespace YaoComponent {
     | "TimePicker"
     | "Tree"
     | "Upload"
-    | CustomComponent;
+    | CustomComponent
+    | "TreeSelect"
+    | "TagList";
 
   // DSL the component DSL
   export interface ViewComponentDSL {
@@ -90,6 +93,7 @@ export namespace YaoComponent {
           /**请求参数绑定，可使用{{}}绑定记录结构 */
           query?: { [key: string]: any };
         };
+        nocache?: boolean
       };
       /**onchange 事件 */
       "$on:change"?: {

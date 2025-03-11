@@ -10,3 +10,4 @@ yao
 *.log
 *.tgz
 src/app
+json-schemas
